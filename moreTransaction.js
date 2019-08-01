@@ -23,13 +23,13 @@ function moreTrans(msg, user) {
 
      env.inquirer.prompt(options).then(answers => {
           if (answers.option == 'yes') {
-               enterPin('', user)
+               enterPin.enterPin('', user)
           } else if (answers.option == 'no') {
                console.clear()
                console.log('Good bye !')
                process.exit()
           } else {
-               welcome('')
+               welcome.welcome('')
           }
      });
 }

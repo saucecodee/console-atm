@@ -21,11 +21,11 @@ function welcome(msg) {
      ];
 
      env.inquirer.prompt(options).then(answers => {
-          validate('', answers.status)
+          validate.enterPin('', answers.status)
      });
      return this;
 }
 
-// welcome('')
+welcome('')
 
-module.exports = welcome;
+exports.welcome = welcome;

@@ -28,7 +28,7 @@ function adminMenu(msg) {
           } else if (answers.option == 'check balance') {
                checkBalance('')
           } else if (answers.option == 'go to main menu') {
-               welcome('')
+               welcome.welcome('')
           } else {
                process.exit()
           }
@@ -54,7 +54,7 @@ function deposit(msg) {
      env.inquirer.prompt(options).then(answers => {
           if (answers.amount > 1000) {
                user.admin.deposit(parseInt(answers.amount))
-               moreTrans("Deposit was successful")
+               moreTrans("Deposit was successful", 'admin')
           } else {
                deposit('ENTER A VALID AMOUNT')
           }

@@ -38,4 +38,4 @@ function enterPin(msg, userStatus) {
 }
 
 
-module.exports = enterPin
+exports.enterPin = enterPin

@@ -29,7 +29,7 @@ function clientMenu(msg) {
           } else if (answers.option == 'check balance') {
                checkBalance('')
           } else if (answers.option == 'go to main menu') {
-               welcome('')
+               welcome.welcome('')
           } else {
                process.exit()
           }
@@ -57,7 +57,7 @@ function withdraw(msg) {
           if (amount > 1000) {
                if (atm.balance > amount) {
                     user.client.withdraw(parseInt(amount))
-                    moreTrans("Withdraw was successful")
+                    moreTrans("Withdraw was successful", 'client')
                }else {
                     moreTrans('Sorry, unable to dispense cash', 'client')
                }
