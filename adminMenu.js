@@ -2,6 +2,7 @@ const env = require('./env');
 const user = require('./user')
 const welcome = require('./app')
 const moreTrans = require('./moreTransaction')
+const atm = require('./atm')
 
 //===============================================================================
 //                  Admin page                                                 //
@@ -10,12 +11,14 @@ const moreTrans = require('./moreTransaction')
 function adminMenu(msg) {
      env.header("Admin menu", msg)
 
+     var atmState = !atm.isDisabled ? "Disable ATM" : "Enable ATM"
+
      var options = [
           {
                type: 'list',
                name: 'option',
                message: 'Select an option',
-               choices: ['Deposit', 'Check balance', 'Go to main menu', 'Exit'],
+               choices: ['Deposit', 'Check balance', atmState, 'Go to main menu', 'Exit'],
                filter: function (val) {
                     return val.toLowerCase();
                }
@@ -27,6 +30,8 @@ function adminMenu(msg) {
                deposit('')
           } else if (answers.option == 'check balance') {
                checkBalance('')
+          } else if (answers.option == atmState.toLocaleLowerCase()) {
+               disableAtm('')
           } else if (answers.option == 'go to main menu') {
                welcome.welcome('')
           } else {
@@ -66,6 +71,38 @@ function checkBalance(msg) {
 
      let balance = user.admin.checkBalance()
      moreTrans(`ATM balance is: N${balance.toLocaleString()}`, 'admin')
+}
+
+function disableAtm(msg) {
+     env.header("Admin menu", msg)
+
+     var options = [
+          {
+               type: 'list',
+               name: 'option',
+               message: 'Select an option',
+               choices: ['Yes', 'No'],
+               filter: function (val) {
+                    return val.toLowerCase();
+               }
+          }
+     ];
+
+     env.inquirer.prompt(options).then(answers => {
+          if (answers.option == "yes") {
+               if (!atm.isDisabled) {
+                    user.admin.disableAtm(true)
+                    moreTrans(`ATM is disabled`, 'admin')
+               } else {
+                    user.admin.disableAtm(false)
+                    moreTrans(`ATM is Enabled`, 'admin')
+               }
+
+          } else {
+               user.admin.disableAtm(fasle)
+               moreTrans('', 'admin')
+          }
+     });
 }
 
 module.exports = adminMenu

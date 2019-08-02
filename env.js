@@ -19,6 +19,7 @@ const colors = require('colors');
 function header(title, msg) {
      console.clear();
 
+     msg = msg.toUpperCase();
      var table = new Table({
           chars: { 'top': '═', 'top-left': '╔', 'top-right': '╗', 'bottom': '═', 'bottom-left': '╚', 'bottom-right': '╝', 'left': '║', 'right': '║' },
           head: [title],
