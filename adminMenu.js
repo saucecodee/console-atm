@@ -52,7 +52,7 @@ function deposit(msg) {
      ];
 
      env.inquirer.prompt(options).then(answers => {
-          if (answers.amount > 1000) {
+          if (answers.amount > 999) {
                user.admin.deposit(parseInt(answers.amount))
                moreTrans("Deposit was successful", 'admin')
           } else {

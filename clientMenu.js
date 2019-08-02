@@ -54,7 +54,7 @@ function withdraw(msg) {
 
      env.inquirer.prompt(options).then(answers => {
           let amount = parseInt(answers.amount)
-          if (amount > 1000) {
+          if (amount > 999) {
                if (atm.balance > amount) {
                     user.client.withdraw(parseInt(amount))
                     moreTrans("Withdraw was successful", 'client')

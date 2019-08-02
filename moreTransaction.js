@@ -3,7 +3,7 @@ const welcome = require('./app')
 const enterPin = require('./validate')
 
 //===============================================================================
-//                  Admin page                                              //
+//                  More Options page                                              //
 //===============================================================================
 
 function moreTrans(msg, user) {
