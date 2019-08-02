@@ -1,5 +1,5 @@
 # console-atm
 
-admin password: 8080\n
+Admin password: 8080
 
-client password: 6080
+Client password: 6080
